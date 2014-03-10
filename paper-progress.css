@@ -1,0 +1,32 @@
+/*
+Copyright 2014 The Polymer Authors. All rights reserved.
+Use of this source code is governed by a BSD-style
+license that can be found in the LICENSE file.
+*/
+
+:host {
+  display: inline-block;
+  width: 200px;
+  height: 4px;
+}
+
+#progressContainer {
+  position: relative;
+  height: 100%;
+  background-color: #bebebe;
+}
+
+#activeProgress, #bufferProgress {
+	position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#activeProgress {
+  background-color: #0f9d58;
+}
+
+#bufferProgress {
+  background-color: #87ceac;
+}

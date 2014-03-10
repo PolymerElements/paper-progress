@@ -1,0 +1,115 @@
+<!--
+Copyright 2014 The Toolkitchen Authors. All rights reserved.
+Use of this source code is governed by a BSD-style
+license that can be found in the LICENSE file.
+-->
+
+<!--
+/**
+ * @group Quantum Paper Elements
+ *
+ * The progress bars are for situations where the percentage completed can be 
+ * determined. They give users a quick sense of how much longer an operation 
+ * will take.
+ *
+ * Example:
+ *
+ *     <paper-progress value="0.5"></paper-progress>
+ *
+ * Styling progress bar:
+ *
+ * To change the active progress bar color:
+ *
+ *     paper-progress /shadow/ #activeProgress {
+ *       background-color: #e91e63;
+ *     }
+ *
+ * To change the buffer progress bar color:
+ *
+ *     paper-progress /shadow/ #bufferProgress {
+ *       background-color: #f8bbd0;
+ *     }
+ *
+ * @element paper-progress
+ * @homepage github.io
+ */
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<polymer-element name="paper-progress" attributes="value min max buffer">
+
+  <template>
+  
+    <link rel="stylesheet" href="paper-progress.css">
+  
+    <div id="progressContainer">
+    
+      <div id="bufferProgress"></div>
+      <div id="activeProgress"></div>
+      
+    </div>
+    
+  </template>
+  
+  <script>
+  
+    Polymer('paper-progress', {
+      
+      /**
+       * The number that represents the current progress.
+       *
+       * @attribute value
+       * @type number
+       * @default 0
+       */
+      value: 0,
+      
+      /**
+       * The number that represents the current buffer progress.
+       *
+       * @attribute buffer
+       * @type number
+       * @default 0
+       */
+      buffer: 0,
+      
+      /**
+       * The number that indicates how much work the task
+       * requires in total before it can be considered complete.
+       *
+       * @attribute max
+       * @type number
+       * @default 1
+       */
+      max: 1,
+      
+      /**
+       * The number that indicates the minimum progress value,
+       * e.g. no progress made.
+       *
+       * @attribute min
+       * @type number
+       * @default 0
+       */
+      min: 0,
+      
+      calcRatio: function(value) {
+        return (value - this.min) / (this.max - this.min);
+      },
+      
+      valueChanged: function() {
+        this.$.activeProgress.style.width = 
+            this.calcRatio(this.value) * 100 + '%';
+      },
+      
+      bufferChanged: function() {
+        this.$.bufferProgress.style.width = 
+            this.calcRatio(this.buffer) * 100 + '%';
+      }
+      
+    });
+    
+  </script>
+  
+</polymer-element>
