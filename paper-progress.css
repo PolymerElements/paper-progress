@@ -13,7 +13,7 @@ license that can be found in the LICENSE file.
 #progressContainer {
   position: relative;
   height: 100%;
-  background-color: #bebebe;
+  background-color: #c8c8c8;
 }
 
 #activeProgress, #bufferProgress {
