@@ -82,7 +82,7 @@ To change the buffer progress bar color:
        *
        * @attribute max
        * @type number
-       * @default 1
+       * @default 100
        */
       max: 100,
       
@@ -97,19 +97,22 @@ To change the buffer progress bar color:
       min: 0,
       
       observe: {
-        'min max value': 'update'
+        'min max value buffer': 'update'
       },
       
       calcRatio: function(value) {
         return (value - this.min) / (this.max - this.min);
       },
       
-      update: function() {
-        this.$.activeProgress.style.width = 
-            this.calcRatio(this.value) * 100 + '%';
+      clampValue: function(value) {
+        return Math.min(this.max, Math.max(this.min, value));
       },
       
-      bufferChanged: function() {
+      update: function() {
+        this.value = this.clampValue(this.value);
+        this.buffer = this.clampValue(this.buffer);
+        this.$.activeProgress.style.width = 
+            this.calcRatio(this.value) * 100 + '%';
         this.$.bufferProgress.style.width = 
             this.calcRatio(this.buffer) * 100 + '%';
       }
