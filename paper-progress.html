@@ -1,38 +1,40 @@
 <!--
-Copyright 2014 The Toolkitchen Authors. All rights reserved.
-Use of this source code is governed by a BSD-style
-license that can be found in the LICENSE file.
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
 <!--
-/**
- * @group Quantum Paper Elements
- *
- * The progress bars are for situations where the percentage completed can be 
- * determined. They give users a quick sense of how much longer an operation 
- * will take.
- *
- * Example:
- *
- *     <paper-progress value="0.5"></paper-progress>
- *
- * Styling progress bar:
- *
- * To change the active progress bar color:
- *
- *     paper-progress /shadow/ #activeProgress {
- *       background-color: #e91e63;
- *     }
- *
- * To change the buffer progress bar color:
- *
- *     paper-progress /shadow/ #bufferProgress {
- *       background-color: #f8bbd0;
- *     }
- *
- * @element paper-progress
- * @homepage github.io
- */
+
+The progress bars are for situations where the percentage completed can be 
+determined. They give users a quick sense of how much longer an operation 
+will take.
+
+Example:
+
+    <paper-progress value="0.5"></paper-progress>
+
+Styling progress bar:
+
+To change the active progress bar color:
+
+    paper-progress /shadow/ #activeProgress {
+      background-color: #e91e63;
+    }
+
+To change the buffer progress bar color:
+
+    paper-progress /shadow/ #bufferProgress {
+      background-color: #f8bbd0;
+    }
+
+@group Quantum Paper Elements
+@element paper-progress
+@homepage github.io
+
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -82,7 +84,7 @@ license that can be found in the LICENSE file.
        * @type number
        * @default 1
        */
-      max: 1,
+      max: 100,
       
       /**
        * The number that indicates the minimum progress value,
