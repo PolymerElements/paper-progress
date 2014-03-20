@@ -94,11 +94,15 @@ license that can be found in the LICENSE file.
        */
       min: 0,
       
+      observe: {
+        'min max value': 'update'
+      },
+      
       calcRatio: function(value) {
         return (value - this.min) / (this.max - this.min);
       },
       
-      valueChanged: function() {
+      update: function() {
         this.$.activeProgress.style.width = 
             this.calcRatio(this.value) * 100 + '%';
       },
