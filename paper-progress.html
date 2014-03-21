@@ -45,7 +45,7 @@ To change the buffer progress bar color:
   
     <link rel="stylesheet" href="paper-progress.css">
   
-    <div id="progressContainer">
+    <div id="progressContainer" role="progressbar" aria-valuenow="{{value}}" aria-valuemin="{{min}}" aria-valuemax="{{max}}">
     
       <div id="bufferProgress"></div>
       <div id="activeProgress"></div>
