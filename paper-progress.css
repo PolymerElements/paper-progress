@@ -16,7 +16,7 @@ license that can be found in the LICENSE file.
   background-color: #c8c8c8;
 }
 
-#activeProgress, #bufferProgress {
+#activeProgress, #secondaryProgress {
   position: absolute;
   top: 0;
   left: 0;
@@ -27,6 +27,6 @@ license that can be found in the LICENSE file.
   background-color: #0f9d58;
 }
 
-#bufferProgress {
+#secondaryProgress {
   background-color: #87ceac;
 }
