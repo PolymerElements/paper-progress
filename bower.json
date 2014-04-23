@@ -2,6 +2,7 @@
   "name": "paper-progress",
   "private": true,
   "dependencies": {
-    "polymer": "Polymer/polymer#master"
+    "polymer": "Polymer/polymer#master",
+    "core-range": "Polymer/core-range#master"
   }
 }
