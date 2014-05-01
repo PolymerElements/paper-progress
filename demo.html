@@ -1,54 +1,109 @@
 <!doctype html>
 <html>
-  <head>
-    <title>paper-progress</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    
-    <script src="../platform/platform.js"></script>
-    
-    <link rel="import" href="paper-progress.html">
-    
-    <style shim-shadowdom>
-    
-      body {
-        font-family: Roboto2, 'Helvetica Neue', Helvetica, Arial;
-        padding: 20px;
-      }
-      
-      paper-progress {
-        width: 300px;
-        padding: 25px;
-      }
-      
-      paper-progress.pink::shadow #activeProgress {
-        background-color: #e91e63;
-      }
-      
-      paper-progress.pink::shadow #secondaryProgress {
-        background-color: #f8bbd0;
-      }
-      
-    </style>
-    
-  </head>
-  
-  <body unresolved>
+<head>
 
-    <paper-progress></paper-progress><br>
+  <title>paper-progress</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <script src="../platform/platform.js"></script>
+  
+  <link rel="import" href="paper-progress.html">
+  
+  <style shim-shadowdom>
+  
+    body {
+      font-family: Roboto2, 'Helvetica Neue', Helvetica, Arial;
+      padding: 20px 40px;
+    }
     
-    <paper-progress value="40"></paper-progress><br>
+    paper-progress {
+      display: block;
+      width: 100%;
+      padding: 25px 0;
+    }
     
-    <paper-progress value="800" min="100" max="1000"></paper-progress><br>
+    paper-progress.pink::shadow #activeProgress {
+      background-color: #e91e63;
+    }
     
-    <paper-progress value="40" secondaryProgress="80"></paper-progress><br>
+    paper-progress.pink::shadow #secondaryProgress {
+      background-color: #f8bbd0;
+    }
     
-    <paper-progress value="200" max="200"></paper-progress><br>
+    button {
+      background: #fafafa;
+      box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.15), 0px 1px 2px 0px rgba(0,0,0,0.1);
+      border: none;
+      padding: 14px;
+      border-radius: 2px;
+      outline: none;
+    }
     
-    <paper-progress class="pink" value="80"></paper-progress><br>
+    button:hover:not(:active):not(:disabled) {
+      background: #fff;
+      box-shadow: 0px 4px 10px 0 rgba(0,0,0,0.1), 0px 2px 10px 0px rgba(0,0,0,0.1);
+    }
     
-    <paper-progress class="pink" value="40" secondaryProgress="80"></paper-progress>
+    button:disabled {
+      box-shadow: none;
+    }
     
-  </body>
+  </style>
+  
+</head>
+<body unresolved>
+
+  <paper-progress></paper-progress>
+
+  <button onclick="startProgress();">Start</button><br><br><br>
+  
+  <paper-progress value="40"></paper-progress><br>
+  
+  <paper-progress value="800" min="100" max="1000"></paper-progress><br>
+  
+  <paper-progress value="40" secondaryProgress="80"></paper-progress><br>
+  
+  <paper-progress value="200" max="200"></paper-progress><br>
+  
+  <paper-progress class="pink" value="80"></paper-progress><br>
+  
+  <paper-progress class="pink" value="40" secondaryProgress="80"></paper-progress>
+  
+  <script>
+    
+    var progress = document.querySelector('paper-progress');
+    var button = document.querySelector('button');
+    
+    var repeat, maxRepeat = 5;
+    
+    function nextProgress() {
+      if (progress.value < progress.max) {
+        progress.value += (progress.step || 1);
+      } else {
+        if (++repeat >= maxRepeat) {
+          button.disabled = false;
+          return;
+        }
+        progress.value = progress.min;
+      }
+      requestAnimationFrame(nextProgress);
+    }
+    
+    function startProgress() {
+      repeat = 0;
+      progress.value = progress.min;
+      button.disabled = true;
+      nextProgress();
+    }
+    
+    addEventListener('polymer-ready', function() {
+      startProgress();
+    });
+    
+  </script>
+  
+</body>
 </html>
