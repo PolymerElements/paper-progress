@@ -73,9 +73,8 @@
           return;
         }
         progress.value = progress.min;
-        Platform.flush();
       }
-      requestAnimationFrame(nextProgress);
+      progress.async(nextProgress);
     }
     
     function startProgress() {
