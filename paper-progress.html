@@ -59,8 +59,8 @@ To change the progress bar background color:
   
     <div id="progressContainer" role="progressbar" aria-valuenow="{{value}}" aria-valuemin="{{min}}" aria-valuemax="{{max}}">
     
-      <div id="secondaryProgress" _style="width: {{secondaryRatio}}%;"></div>
-      <div id="activeProgress" _style="width: {{ratio}}%;"></div>
+      <div id="secondaryProgress"></div>
+      <div id="activeProgress"></div>
       
     </div>
     
@@ -89,6 +89,14 @@ To change the progress bar background color:
         this.super();
         this.secondaryProgress = this.clampValue(this.secondaryProgress);
         this.secondaryRatio = this.calcRatio(this.secondaryProgress) * 100;
+      },
+      
+      ratioChanged: function() {
+        this.$.activeProgress.style.width = this.ratio + '%';
+      },
+      
+      secondaryRatioChanged: function() {
+        this.$.secondaryProgress.width = this.secondaryRadio + '%';
       }
       
     });
