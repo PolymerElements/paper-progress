@@ -33,3 +33,67 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 #secondaryProgress {
   background-color: #87ceac;
 }
+
+#activeProgress.indeterminate {
+  -webkit-animation: indeterminate 1s linear infinite;
+  animation: indeterminate 1s linear infinite;
+}
+/*
+@-webkit-keyframes indeterminate {
+  0% {
+    left: 0;
+    right: 50%;
+  }
+  100% {
+    left: 50%;
+    right: 0;
+  }
+}*/
+
+@-webkit-keyframes indeterminate {
+  0% {
+    -webkit-transform: translateX(-50%) scaleX(0);
+  }
+  10% {
+    -webkit-transform: translateX(-30%) scaleX(0.4);
+  }
+  25% {
+    -webkit-transform: translateX(-20%) scaleX(0.6);
+  }
+  50% {
+    -webkit-transform: translateX(0%) scaleX(0.4);
+  }
+  75% {
+    -webkit-transform: translateX(20%) scaleX(0.6);
+  }
+  90% {
+    -webkit-transform: translateX(30%) scaleX(0.4);
+  }
+  100% {
+    -webkit-transform: translateX(50%) scaleX(0);
+  }
+}
+
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-50%) scaleX(0);
+  }
+  10% {
+    transform: translateX(-30%) scaleX(0.4);
+  }
+  25% {
+    transform: translateX(-20%) scaleX(0.6);
+  }
+  50% {
+    transform: translateX(0%) scaleX(0.4);
+  }
+  75% {
+    transform: translateX(20%) scaleX(0.6);
+  }
+  90% {
+    transform: translateX(30%) scaleX(0.4);
+  }
+  100% {
+    transform: translateX(50%) scaleX(0);
+  }
+}

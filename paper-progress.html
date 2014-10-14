@@ -51,7 +51,7 @@ To change the progress bar background color:
 
 <link rel="import" href="../core-range/core-range.html">
 
-<polymer-element name="paper-progress" extends="core-range" attributes="secondaryProgress">
+<polymer-element name="paper-progress" extends="core-range" attributes="secondaryProgress indeterminate">
 
   <template>
   
@@ -79,16 +79,30 @@ To change the progress bar background color:
        */
       secondaryProgress: 0,
       
+      /**
+       * Use an indeterminate progress indicator.
+       *
+       * @attribute indeterminate
+       * @type boolean
+       * @default false
+       */
+      indeterminate: false,
+      
       step: 0,
       
       observe: {
-        'value secondaryProgress min max': 'update'
+        'value secondaryProgress min max indeterminate': 'update'
       },
       
       update: function() {
-        this.super();
-        this.secondaryProgress = this.clampValue(this.secondaryProgress);
-        this.secondaryRatio = this.calcRatio(this.secondaryProgress) * 100;
+        this.$.activeProgress.classList.toggle('indeterminate', this.indeterminate);
+        if (this.indeterminate) {
+          this.ratio = 100;
+        } else {
+          this.super();
+          this.secondaryProgress = this.clampValue(this.secondaryProgress);
+          this.secondaryRatio = this.calcRatio(this.secondaryProgress) * 100;
+        }
       },
       
       ratioChanged: function() {
