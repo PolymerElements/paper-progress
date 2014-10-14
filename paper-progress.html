@@ -95,9 +95,13 @@ To change the progress bar background color:
       },
       
       update: function() {
+        // The animation uses percentage widths, so the element must be attached before
+        // the animation is applied. So, toggle the 'indeterminate' class here instead of
+        // binding it to the element.
         this.$.activeProgress.classList.toggle('indeterminate', this.indeterminate);
+
         if (this.indeterminate) {
-          this.ratio = 100;
+          this.ratio = 0;
         } else {
           this.super();
           this.secondaryProgress = this.clampValue(this.secondaryProgress);
