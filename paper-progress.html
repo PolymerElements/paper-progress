@@ -59,8 +59,8 @@ To change the progress bar background color:
   
     <div id="progressContainer" role="progressbar" aria-valuenow="{{value}}" aria-valuemin="{{min}}" aria-valuemax="{{max}}">
     
-      <div id="secondaryProgress"></div>
-      <div id="activeProgress"></div>
+      <div id="secondaryProgress" fit></div>
+      <div id="activeProgress" fit indeterminate?="{{indeterminate}}"></div>
       
     </div>
     
@@ -87,7 +87,7 @@ To change the progress bar background color:
        * @default false
        */
       indeterminate: false,
-      
+
       step: 0,
       
       observe: {
@@ -95,26 +95,21 @@ To change the progress bar background color:
       },
       
       update: function() {
-        // The animation uses percentage widths, so the element must be attached before
-        // the animation is applied. So, toggle the 'indeterminate' class here instead of
-        // binding it to the element.
-        this.$.activeProgress.classList.toggle('indeterminate', this.indeterminate);
-
-        if (this.indeterminate) {
-          this.ratio = 0;
-        } else {
-          this.super();
-          this.secondaryProgress = this.clampValue(this.secondaryProgress);
-          this.secondaryRatio = this.calcRatio(this.secondaryProgress) * 100;
-        }
+        this.super();
+        this.secondaryProgress = this.clampValue(this.secondaryProgress);
+        this.secondaryRatio = this.calcRatio(this.secondaryProgress) * 100;
       },
       
       ratioChanged: function() {
-        this.$.activeProgress.style.width = this.ratio + '%';
+        var transform = 'scaleX(' + (this.ratio / 100) + ')';
+        this.$.activeProgress.style.webkitTransform = transform;
+        this.$.activeProgress.style.transform = transform;
       },
       
       secondaryRatioChanged: function() {
-        this.$.secondaryProgress.style.width = this.secondaryRatio + '%';
+        var transform = 'scaleX(' + (this.secondaryRatio / 100) + ')';
+        this.$.secondaryProgress.style.webkitTransform = transform;
+        this.$.secondaryProgress.style.transform = transform;
       }
       
     });

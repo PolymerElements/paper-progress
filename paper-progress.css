@@ -17,60 +17,48 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   position: relative;
   height: 100%;
   background-color: #c8c8c8;
-}
-
-#activeProgress, #secondaryProgress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
+  overflow: hidden;
 }
 
 #activeProgress {
   background-color: #0f9d58;
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
 }
 
 #secondaryProgress {
   background-color: #87ceac;
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
 }
 
-#activeProgress.indeterminate {
-  -webkit-animation: left-end 1s ease-in infinite, right-end 1s ease-out infinite;
-  animation: left-end 1s ease-in infinite, right-end 1s ease-out infinite;
+#activeProgress[indeterminate] {
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-animation: indeterminate-bar 1s linear infinite;
+  animation: indeterminate-bar 1s linear infinite;
 }
 
-@-webkit-keyframes left-end {
+@-webkit-keyframes indeterminate-bar {
   0% {
-    left: 0;
+    -webkit-transform: translate(-50%) scaleX(0);
+  }
+  50% {
+    -webkit-transform: translate(0%) scaleX(0.3);
   }
   100% {
-    left: 100%;
+    -webkit-transform: translate(50%) scaleX(0);
   }
 }
 
-@keyframes left-end {
+@keyframes indeterminate-bar {
   0% {
-    left: 0;
+    transform: translate(-50%) scaleX(0);
+  }
+  50% {
+    transform: translate(0%) scaleX(0.3);
   }
   100% {
-    left: 100%;
-  }
-}
-
-@-webkit-keyframes right-end {
-  0% {
-    right: 100%;
-  }
-  100% {
-    right: 0;
-  }
-}
-
-@keyframes right-end {
-  0% {
-    right: 100%;
-  }
-  100% {
-    right: 0;
+    transform: translate(50%) scaleX(0);
   }
 }
