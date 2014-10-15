@@ -32,7 +32,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   transform-origin: left center;
 }
 
-#activeProgress[indeterminate] {
+#activeProgress.indeterminate {
   -webkit-transform-origin: center center;
   transform-origin: center center;
   -webkit-animation: indeterminate-bar 1s linear infinite;

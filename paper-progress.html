@@ -60,7 +60,7 @@ To change the progress bar background color:
     <div id="progressContainer" role="progressbar" aria-valuenow="{{value}}" aria-valuemin="{{min}}" aria-valuemax="{{max}}">
     
       <div id="secondaryProgress" fit></div>
-      <div id="activeProgress" fit indeterminate?="{{indeterminate}}"></div>
+      <div id="activeProgress" fit></div>
       
     </div>
     
@@ -98,6 +98,10 @@ To change the progress bar background color:
         this.super();
         this.secondaryProgress = this.clampValue(this.secondaryProgress);
         this.secondaryRatio = this.calcRatio(this.secondaryProgress) * 100;
+
+        // If we use attribute/class binding, the animation sometimes doesn't translate properly
+        // on Safari 7.1. So instead, we toggle the class here in the update method.
+        this.$.activeProgress.classList.toggle('indeterminate', this.indeterminate);
       },
       
       ratioChanged: function() {
