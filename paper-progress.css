@@ -20,16 +20,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   overflow: hidden;
 }
 
-#activeProgress {
-  background-color: #0f9d58;
+#activeProgress,
+#secondaryProgress {
   -webkit-transform-origin: left center;
   transform-origin: left center;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+}
+
+#activeProgress {
+  background-color: #0f9d58;
 }
 
 #secondaryProgress {
   background-color: #87ceac;
-  -webkit-transform-origin: left center;
-  transform-origin: left center;
 }
 
 #activeProgress.indeterminate {

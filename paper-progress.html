@@ -103,17 +103,18 @@ To change the progress bar background color:
         // on Safari 7.1. So instead, we toggle the class here in the update method.
         this.$.activeProgress.classList.toggle('indeterminate', this.indeterminate);
       },
-      
-      ratioChanged: function() {
-        var transform = 'scaleX(' + (this.ratio / 100) + ')';
-        this.$.activeProgress.style.webkitTransform = transform;
-        this.$.activeProgress.style.transform = transform;
+
+      transformProgress: function(progress, ratio) {
+        var transform = 'scaleX(' + (ratio / 100) + ')';
+        progress.style.transform = progress.style.webkitTransform = transform;
       },
-      
+
+      ratioChanged: function() {
+        this.transformProgress(this.$.activeProgress, this.ratio);
+      },
+
       secondaryRatioChanged: function() {
-        var transform = 'scaleX(' + (this.secondaryRatio / 100) + ')';
-        this.$.secondaryProgress.style.webkitTransform = transform;
-        this.$.secondaryProgress.style.transform = transform;
+        this.transformProgress(this.$.secondaryProgress, this.secondaryRatio);
       }
       
     });
