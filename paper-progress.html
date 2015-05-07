@@ -28,26 +28,35 @@ Styling progress bar:
 
 To change the active progress bar color:
 
-    paper-progress::shadow #activeProgress {
-      background-color: #e91e63;
+    paper-progress {
+       --paper-progress-active-color: #e91e63;
     }
 
 To change the secondary progress bar color:
 
-    paper-progress::shadow #secondaryProgress {
-      background-color: #f8bbd0;
+    paper-progress {
+      --paper-progress-secondary-color: #f8bbd0;
     }
 
 To change the progress bar background color:
 
-    paper-progress::shadow #progressContainer {
-      background-color: #64ffda;
+    paper-progress {
+      --paper-progress-container-color: #64ffda;
     }
 
 @group Paper Elements
 @element paper-progress
 @homepage github.io
 -->
+
+<style is="x-style">
+  * {
+    --paper-progress-active-color: #0f9d58;
+    --paper-progress-secondary-color: #f8bbd0;
+    --paper-progress-container-color: #c8c8c8;
+
+  }
+</style>
 
 <link rel="import" href="../iron-range-behavior/iron-range-behavior.html">
 <link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
@@ -63,7 +72,7 @@ To change the progress bar background color:
     #progressContainer {
       position: relative;
       height: 100%;
-      background-color: #c8c8c8;
+      background-color: var(--paper-progress-container-color);
       overflow: hidden;
     }
 
@@ -76,11 +85,11 @@ To change the progress bar background color:
     }
 
     #activeProgress {
-      background-color: #0f9d58;
+      background-color: var(--paper-progress-active-color);
     }
 
     #secondaryProgress {
-      background-color: #87ceac;
+      background-color: var(--paper-progress-secondary-color);
     }
 
     #activeProgress.indeterminate {
@@ -130,6 +139,8 @@ To change the progress bar background color:
     behaviors: [
       Polymer.IronRangeBehavior
     ],
+
+    enableCustomStyleProperties: true,
 
     properties: {
 
