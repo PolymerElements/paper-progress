@@ -49,12 +49,11 @@ To change the progress bar background color:
 @homepage github.io
 -->
 
-<style is="x-style">
+<style is="custom-style">
   * {
     --paper-progress-active-color: #0f9d58;
     --paper-progress-secondary-color: #f8bbd0;
     --paper-progress-container-color: #c8c8c8;
-
   }
 </style>
 
@@ -154,22 +153,32 @@ To change the progress bar background color:
       },
 
       /**
+     * The secondary ratio
+     */
+      secondaryRatio: {
+        type: Number,
+        value: 0,
+        readOnly: true,
+        observer: '_secondaryRatioChanged'
+      },
+
+      /**
        * Use an indeterminate progress indicator.
        */
       indeterminate: {
         type: Boolean,
         value: false,
-        notify: true
+        notify: true,
+        observer: '_toggleIndeterminate'
       }
     },
 
     observers: [
-      '_updateProgress(indeterminate)',
       '_ratioChanged(ratio)',
       '_secondaryProgressChanged(secondaryProgress, min, max)'
     ],
 
-    _updateProgress: function() {
+    _toggleIndeterminate: function() {
       // If we use attribute/class binding, the animation sometimes doesn't translate properly
       // on Safari 7.1. So instead, we toggle the class here in the update method.
       this.$.activeProgress.classList.toggle('indeterminate', this.indeterminate);
@@ -180,15 +189,17 @@ To change the progress bar background color:
       progress.style.transform = progress.style.webkitTransform = transform;
     },
 
-    _ratioChanged: function() {
-      this._transformProgress(this.$.activeProgress, this.ratio);
+    _ratioChanged: function(ratio) {
+      this._transformProgress(this.$.activeProgress, ratio);
+    },
+
+    _secondaryRatioChanged: function(secondaryRatio) {
+      this._transformProgress(this.$.secondaryProgress, secondaryRatio);
     },
 
     _secondaryProgressChanged: function() {
-      var secondaryProgress = this._clampValue(this.secondaryProgress);
-      var secondaryRatio = this._calcRatio(secondaryProgress) * 100;
-
-      this._transformProgress(this.$.secondaryProgress, secondaryRatio);
+      this.secondaryProgress = this._clampValue(this.secondaryProgress);
+      this._setSecondaryRatio(this._calcRatio(this.secondaryProgress) * 100);
     }
 
   });
