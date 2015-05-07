@@ -49,16 +49,17 @@ To change the progress bar background color:
 @homepage github.io
 -->
 
-<style is="custom-style">
-  * {
-    --paper-progress-active-color: #0f9d58;
-    --paper-progress-secondary-color: #f8bbd0;
-    --paper-progress-container-color: #c8c8c8;
-  }
-</style>
-
+<link rel="import" href="../paper-styles/paper-styles.html">
 <link rel="import" href="../iron-range-behavior/iron-range-behavior.html">
 <link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
+
+<style is="custom-style">
+  * {
+    --paper-progress-active-color: var(--google-green-500);
+    --paper-progress-secondary-color: var(--google-red-100);
+    --paper-progress-container-color: var(--google-grey-300);
+  }
+</style>
 
 <dom-module id="paper-progress">
   <style>
@@ -128,7 +129,7 @@ To change the progress bar background color:
       <div id="activeProgress" class="fit"></div>
     </div>
   </template>
-</polymer-element>
+</dom-module>
 
 <script>
   Polymer({
@@ -138,8 +139,6 @@ To change the progress bar background color:
     behaviors: [
       Polymer.IronRangeBehavior
     ],
-
-    enableCustomStyleProperties: true,
 
     properties: {
 
