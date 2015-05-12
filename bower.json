@@ -1,8 +1,29 @@
 {
   "name": "paper-progress",
+  "version": "0.9.0",
   "private": true,
+  "authors": "The Polymer Authors",
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer"
+  ],
+  "main": [
+    "paper-progress.html"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/paper-progress.git"
+  },
   "dependencies": {
-    "core-range": "Polymer/core-range#master",
-    "paper-button": "Polymer/paper-button#master"
+    "polymer": "polymer/polymer#v0.9.0-rc.1",
+    "iron-range-behavior": "PolymerElements/iron-range-behavior#^0.9.0",
+    "paper-styles": "PolymerElements/paper-styles#^0.9.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^0.9.0",
+    "test-fixture": "PolymerElements/test-fixture#^0.9.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.6.0",
+    "paper-button": "PolymerElements/paper-button#^0.9.0"
   }
 }
