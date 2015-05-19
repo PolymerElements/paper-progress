@@ -172,7 +172,7 @@ To change the progress bar background color:
     _toggleIndeterminate: function() {
       // If we use attribute/class binding, the animation sometimes doesn't translate properly
       // on Safari 7.1. So instead, we toggle the class here in the update method.
-      this.$.activeProgress.classList.toggle('indeterminate', this.indeterminate);
+      this.toggleClass('indeterminate', this.indeterminate, this.$.activeProgress);
     },
 
     _transformProgress: function(progress, ratio) {
