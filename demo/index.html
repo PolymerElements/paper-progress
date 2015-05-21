@@ -17,53 +17,68 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-
+  <link rel="import" href="../../paper-styles/paper-styles.html">
+  <link rel="import" href="../../paper-styles/demo-pages.html">
   <link rel="import" href="../paper-progress.html">
   <link rel="import" href="../../paper-button/paper-button.html">
-  <link rel="stylesheet" href="../../paper-styles/demo.css">
 
   <style is="custom-style">
+    body {
+      padding: 40px;
+    }
+
     paper-progress {
       display: block;
       width: 100%;
-      padding: 25px 0;
+      padding-top: 20px;
+      padding-bottom: 20px;
     }
 
-    paper-progress.pink {
-      --paper-progress-active-color: var(--google-red-700);
+    paper-progress.blue {
+      --paper-progress-active-color: var(--paper-light-blue-500);
+      --paper-progress-secondary-color: var(--paper-light-blue-100);
     }
 
-    paper-progress.pink {
-      --paper-progress-secondary-color: var(--google-red-100);
+    paper-progress.red {
+      --paper-progress-active-color: var(--paper-red-500);
+      --paper-progress-secondary-color: var(--paper-red-100);
+    }
+
+    paper-progress.orange {
+      --paper-progress-active-color: var(--paper-orange-500);
+      --paper-progress-secondary-color: var(--paper-orange-100);
+    }
+
+    paper-progress.green {
+      --paper-progress-active-color: var(--paper-light-green-500);
+      --paper-progress-secondary-color: var(--paper-light-green-100);
     }
   </style>
 
 </head>
 <body>
+  <div class="vertical layout">
+    <h4>Progress bar</h4>
+    <div class="vertical-section">
+      <paper-progress></paper-progress>
+      <paper-button raised onclick="startProgress();">Start</paper-button>
+    </div>
 
-  <paper-progress></paper-progress>
+    <h4>Indeterminate</h4>
+    <div class="vertical-section">
+      <paper-progress indeterminate></paper-progress><br>
+      <paper-progress class="blue" indeterminate alue="800" min="100" max="1000"></paper-progress><br>
+    </div>
 
-  <paper-button raised onclick="startProgress();">Start</paper-button>
-
-  <br><br><br>
-
-  <paper-progress></paper-progress><br>
-
-  <paper-progress value="40"></paper-progress><br>
-
-  <paper-progress value="800" min="100" max="1000"></paper-progress><br>
-
-  <paper-progress value="40" secondary-progress="80"></paper-progress><br>
-
-  <paper-progress value="200" max="200"></paper-progress><br>
-
-  <paper-progress indeterminate></paper-progress><br>
-
-  <paper-progress class="pink" value="80"></paper-progress><br>
-
-  <paper-progress class="pink" value="40" secondary-progress="80"></paper-progress><br>
-
-  <paper-progress class="pink" indeterminate></paper-progress><br>
+    <h4>Color</h4>
+    <div class="vertical-section">
+      <paper-progress value="40" class="blue"></paper-progress><br>
+      <paper-progress value="800" min="100" max="1000" class="red"></paper-progress><br>
+      <paper-progress value="40" class="orange"></paper-progress><br>
+      <paper-progress value="200" max="200" class="green"></paper-progress><br>
+      <paper-progress value="40" secondary-progress="80" class="blue"></paper-progress><br>
+    </div>
+  </div>
 
   <script>
 
@@ -105,4 +120,3 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 </body>
 </html>
-
