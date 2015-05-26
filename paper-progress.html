@@ -110,15 +110,12 @@ To change the progress bar background color:
       0% {
         -webkit-transform: scaleX(1) translateX(-100%);
       }
-      40% {
+      50% {
         -webkit-transform: scaleX(1) translateX(0%);
       }
-      60% {
+      75% {
         -webkit-transform: scaleX(1) translateX(0%);
-        -webkit-animation-timing-function: ease-out;
-      }
-      90% {
-        -webkit-transform: scaleX(0) translateX(0%);
+        -webkit-animation-timing-function: cubic-bezier(.28,.62,.37,.91);
       }
       100% {
         -webkit-transform: scaleX(0) translateX(0%);
@@ -127,21 +124,17 @@ To change the progress bar background color:
 
     @-webkit-keyframes indeterminate-splitter {
       0% {
-        -webkit-transform: scaleX(.5) translateX(-150%);
+        -webkit-transform: scaleX(.75) translateX(-125%);
       }
-      25% {
-        -webkit-transform: scaleX(.5) translateX(-150%);
-        -webkit-animation-timing-function: cubic-bezier(.5,.25,.75,.5);
+      30% {
+        -webkit-transform: scaleX(.75) translateX(-125%);
+        -webkit-animation-timing-function: cubic-bezier(.42,0,.6,.8);
       }
-      50% {
-        -webkit-transform: scaleX(.5) translateX(0%);
-        -webkit-animation-timing-function: cubic-bezier(.25,.5,.5,.75);
-      }
-      75% {
-        -webkit-transform: scaleX(.5) translateX(150%);
+      90% {
+        -webkit-transform: scaleX(.75) translateX(125%);
       }
       100% {
-        -webkit-transform: scaleX(.5) translateX(150%);
+        -webkit-transform: scaleX(.75) translateX(125%);
       }
     }
 
