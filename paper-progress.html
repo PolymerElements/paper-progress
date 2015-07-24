@@ -58,6 +58,11 @@ the value changed. You can also customize the transition:
       --paper-progress-transition-transition-delay: 0s;
     }
     
+The following mixins are available for styling:
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-progress-container` | Mixin applied to container | `{}`
+
 @group Paper Elements
 @element paper-progress
 @hero hero.svg
@@ -94,6 +99,7 @@ the value changed. You can also customize the transition:
       position: relative;
       height: 100%;
       overflow: hidden;
+      @apply(--paper-progress-container);
     }
     
     #progressContainer, #indeterminateSplitter {
