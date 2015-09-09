@@ -63,6 +63,7 @@ The following mixins are available for styling:
 Custom property                             | Description                            | Default
 --------------------------------------------|----------------------------------------|----------
 --paper-progress-container-color            | Mixin applied to container             | --google-grey-300
+--paper-progress-height                     | The height of the progress bar         | 4px
 --paper-progress-transition-duration        | Duration of the transition             | 0.008s
 --paper-progress-transition-timing-function | The timing function for the transition | ease
 --paper-progress-transition-delay           | delay for the transition               | 0s
@@ -80,19 +81,34 @@ Custom property                             | Description                       
     :host {
       display: block;
       width: 200px;
-      height: 4px;
       position: relative;
       overflow: hidden;
     }
 
     :host,
-    #primaryProgress.indeterminate:after {
-      background-color: var(--paper-progress-container-color, --google-grey-300);
+    :host > *,
+    /* the container*/
+    :host:before,
+    /* the stripe for the indeterminate animation*/
+    .indeterminate:after {
+      height: var(--paper-progress-height, 4px);
     }
 
-    :host > *,
-    #primaryProgress.indeterminate:after {
-      @apply(--layout-fit);
+    .indeterminate:after,
+    :host:before {
+      background-color: var(--paper-progress-container-color, --google-grey-300);
+    }
+    
+    :host:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+    }
+    
+    :host:before,
+    .indeterminate:after {
+      top: calc(50% - var(--paper-progress-height, 4px) / 2);
     }
 
     :host(.transiting) > * {
@@ -122,7 +138,10 @@ Custom property                             | Description                       
 
     #primaryProgress {
       background-color: var(--paper-progress-active-color, --google-green-500);
+      position: relative;
+      top: calc(var(--paper-progress-height, 4px) * -1);
     }
+
 
     #secondaryProgress {
       background-color: var(--paper-progress-secondary-color, --google-green-100);
@@ -135,10 +154,12 @@ Custom property                             | Description                       
       animation: indeterminate-bar 2s linear infinite;
     }
 
-    #primaryProgress.indeterminate:after {
+    .indeterminate:after {
       content: "";
+      position: absolute;
+      left: 0;
       width: 100%;
-      
+
       -webkit-transform-origin: center center;
       transform-origin: center center;
 
@@ -211,7 +232,7 @@ Custom property                             | Description                       
     }
   </style>
   <template>
-    <div id="secondaryProgress" hidden$="[[!_hasSecondaryProgress(secondaryRatio)]]"></div>
+    <div id="secondaryProgress"></div>
     <div id="primaryProgress"></div>
   </template>
 </dom-module>
@@ -293,10 +314,6 @@ Custom property                             | Description                       
       this.setAttribute('aria-valuenow', value);
       this.setAttribute('aria-valuemin', min);
       this.setAttribute('aria-valuemax', max);
-    },
-
-    _hasSecondaryProgress: function(secondaryRatio) {
-      return secondaryRatio > 0
     }
 
   });
