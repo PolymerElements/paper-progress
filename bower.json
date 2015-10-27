@@ -9,9 +9,7 @@
     "polymer",
     "progress"
   ],
-  "main": [
-    "paper-progress.html"
-  ],
+  "main": "paper-progress.html",
   "repository": {
     "type": "git",
     "url": "git://github.com/PolymerElements/paper-progress.git"
