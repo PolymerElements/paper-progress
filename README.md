@@ -76,3 +76,5 @@ Custom property                               | Description                     
 `--paper-progress-disabled-active-color`      | The color of the active bar if disabled     | `--google-grey-500`
 `--paper-progress-disabled-secondary-color`   | The color of the secondary bar if disabled  | `--google-grey-300`
 `--paper-progress-height`                     | The height of the progress bar              | `4px`
+
+
