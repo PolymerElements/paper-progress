@@ -96,18 +96,18 @@ Custom property                               | Description                     
 
       #progressContainer,
       /* the stripe for the indeterminate animation*/
-      .indeterminate:after {
+      .indeterminate::after {
         height: var(--paper-progress-height, 4px);
       }
 
       #primaryProgress,
       #secondaryProgress,
-      .indeterminate:after {
+      .indeterminate::after {
         @apply(--layout-fit);
       }
 
       #progressContainer,
-      .indeterminate:after {
+      .indeterminate::after {
         background-color: var(--paper-progress-container-color, --google-grey-300);
       }
 
@@ -163,7 +163,7 @@ Custom property                               | Description                     
         animation: indeterminate-bar 2s linear infinite;
       }
 
-      :host(:not([disabled])) #primaryProgress.indeterminate:after {
+      :host(:not([disabled])) #primaryProgress.indeterminate::after {
         content: "";
         -webkit-transform-origin: center center;
         transform-origin: center center;
