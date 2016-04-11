@@ -84,7 +84,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </div>
 
   <script>
-    var progress, button, animationFrame;
+    var progress, button;
     var repeat, maxRepeat = 5, animating = false;
 
     function nextProgress() {
@@ -99,7 +99,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
         progress.value = progress.min;
       }
-      animationFrame = requestAnimationFrame(nextProgress);
+      requestAnimationFrame(nextProgress);
     }
 
     function startProgress() {
