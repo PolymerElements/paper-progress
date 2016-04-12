@@ -298,7 +298,6 @@ Custom property                               | Description                     
     },
 
     _toggleIndeterminate: function(indeterminate) {
-      this.indeterminate = indeterminate;
       // If we use attribute/class binding, the animation sometimes doesn't translate properly
       // on Safari 7.1. So instead, we toggle the class here in the update method.
       this.toggleClass('indeterminate', indeterminate, this.$.primaryProgress);
