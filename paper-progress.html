@@ -286,11 +286,21 @@ Custom property                               | Description                     
         value: false,
         reflectToAttribute: true,
         observer: '_disabledChanged'
+      },
+
+      /**
+       * A start position of the progress.
+       * When > 0 and not `indeterminate` then the indicator will be moved right
+       * by corresponding position.
+       */
+      start: {
+        type: Number,
+        value: 0
       }
     },
 
     observers: [
-      '_progressChanged(secondaryProgress, value, min, max)'
+      '_progressChanged(secondaryProgress, value, min, max, start)'
     ],
 
     hostAttributes: {
@@ -303,8 +313,13 @@ Custom property                               | Description                     
       this.toggleClass('indeterminate', indeterminate, this.$.primaryProgress);
     },
 
-    _transformProgress: function(progress, ratio) {
-      var transform = 'scaleX(' + (ratio / 100) + ')';
+    _transformProgress: function(progress, ratio, steps) {
+      if (!steps) {
+        steps = 0;
+      }
+      var transform = ' translateX(' + (steps * 100) + '%)';
+      transform += 'scaleX(' + (ratio / 100) + ')';
+
       progress.style.transform = progress.style.webkitTransform = transform;
     },
 
@@ -312,16 +327,17 @@ Custom property                               | Description                     
       this._transformProgress(this.$.primaryProgress, ratio);
     },
 
-    _progressChanged: function(secondaryProgress, value, min, max) {
+    _progressChanged: function(secondaryProgress, value, min, max, start) {
       secondaryProgress = this._clampValue(secondaryProgress);
       value = this._clampValue(value);
+      start = this._calcRatio(start);
 
       var secondaryRatio = this._calcRatio(secondaryProgress) * 100;
       var mainRatio = this._calcRatio(value) * 100;
 
       this._setSecondaryRatio(secondaryRatio);
       this._transformProgress(this.$.secondaryProgress, secondaryRatio);
-      this._transformProgress(this.$.primaryProgress, mainRatio);
+      this._transformProgress(this.$.primaryProgress, mainRatio, start);
 
       this.secondaryProgress = secondaryProgress;
 
