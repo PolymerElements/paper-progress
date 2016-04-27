@@ -118,6 +118,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           });
         });
       });
+
+      test('set start', function(done) {
+        progress.min = 0;
+        progress.max = 100;
+        progress.value = 25;
+        progress.start = 25;
+        asyncPlatformFlush(function() {
+          var transform = progress.$.primaryProgress.style.getPropertyValue('transform');
+          var index = transform.indexOf('translateX(25%)')
+          assert.equal(index, 0, 'TranslateX not set correctly.');
+          done();
+        });
+      });
     });
 
     suite('transiting class', function() {
