@@ -52,9 +52,9 @@ Material design: [Progress & activity](https://www.google.com/design/spec/compon
 ```
 -->
 ```html
-<paper-progress indeterminate></paper-progress>
+<paper-progress indeterminate class="blue"></paper-progress>
 <paper-progress indeterminate class="slow red"></paper-progress>
-<paper-progress value="40" secondary-progress="80" class="blue"></paper-progress>
+<paper-progress value="40" secondary-progress="80"></paper-progress>
 ```
 
 The progress bars are for situations where the percentage completed can be
