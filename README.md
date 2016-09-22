@@ -45,8 +45,8 @@ Material design: [Progress & activity](https://www.google.com/design/spec/compon
     --paper-progress-active-color: var(--paper-red-500);
     --paper-progress-secondary-color: var(--paper-red-100);
   }
-  }
 </style>
+<next-code-block></next-code-block>
 </template>
 </custom-element-demo>
 ```
