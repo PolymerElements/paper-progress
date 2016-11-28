@@ -86,6 +86,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <paper-progress value="40" secondary-progress="80" class="blue"></paper-progress>
       </template>
     </demo-snippet>
+
+    <h3>It can represent a timeline</h3>
+    <demo-snippet class="centered-demo">
+      <template>
+        <style is="custom-style">
+          paper-progress.blue {
+            --paper-progress-active-color: var(--paper-light-blue-500);
+            --paper-progress-secondary-color: var(--paper-light-blue-100);
+          }
+
+          paper-progress.red {
+            --paper-progress-active-color: var(--paper-red-500);
+            --paper-progress-secondary-color: var(--paper-red-100);
+          }
+
+          paper-progress.green {
+            --paper-progress-active-color: var(--paper-light-green-500);
+            --paper-progress-secondary-color: var(--paper-light-green-100);
+          }
+        </style>
+        <paper-progress value="250" start="0" min="0" max="1000" class="red"></paper-progress>
+        <paper-progress value="500" start="250" min="0" max="1000" class="green"></paper-progress>
+        <paper-progress value="250" start="750" min="0" max="1000" class="blue"></paper-progress>
+      </template>
+    </demo-snippet>
   </div>
 
   <script>
