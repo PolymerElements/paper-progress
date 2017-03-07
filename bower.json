@@ -19,7 +19,7 @@
     "iron-flex-layout": "PolymerElements/iron-flex-layout#2.0-preview",
     "iron-range-behavior": "PolymerElements/iron-range-behavior#2.0-preview",
     "paper-styles": "PolymerElements/paper-styles#2.0-preview",
-    "polymer": "Polymer/polymer#2.0-preview"
+    "polymer": "Polymer/polymer#^2.0.0-rc.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
