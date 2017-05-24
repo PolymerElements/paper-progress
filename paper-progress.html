@@ -314,6 +314,9 @@ Custom property                                  | Description                  
       // If we use attribute/class binding, the animation sometimes doesn't translate properly
       // on Safari 7.1. So instead, we toggle the class here in the update method.
       this.toggleClass('indeterminate', indeterminate, this.$.primaryProgress);
+      if (this.indeterminate) {
+        this.removeAttribute('aria-valuenow');
+      }
     },
 
     _transformProgress: function(progress, ratio) {
@@ -338,7 +341,10 @@ Custom property                                  | Description                  
 
       this.secondaryProgress = secondaryProgress;
 
-      this.setAttribute('aria-valuenow', value);
+      if (!this.indeterminate) {
+        this.setAttribute('aria-valuenow', value);
+      }
+
       this.setAttribute('aria-valuemin', min);
       this.setAttribute('aria-valuemax', max);
     },
