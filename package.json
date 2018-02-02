@@ -1,0 +1,10 @@
+{
+  "name": "@polymer/paper-progress",
+  "private": true,
+  "description": "A material design progress bar",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/paper-progress.git"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt"
+}
