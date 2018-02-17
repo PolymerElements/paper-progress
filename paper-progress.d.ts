@@ -104,11 +104,11 @@ interface PaperProgressElement extends Polymer.Element, Polymer.IronRangeBehavio
    */
   disabled: boolean|null|undefined;
   hostAttributes: object|null;
-  _toggleIndeterminate(indeterminate: any): any;
-  _transformProgress(progress: any, ratio: any): any;
-  _mainRatioChanged(ratio: any): any;
-  _progressChanged(secondaryProgress: any, value: any, min: any, max: any, indeterminate: any): any;
-  _disabledChanged(disabled: any): any;
+  _toggleIndeterminate(indeterminate: any): void;
+  _transformProgress(progress: any, ratio: any): void;
+  _mainRatioChanged(ratio: any): void;
+  _progressChanged(secondaryProgress: any, value: any, min: any, max: any, indeterminate: any): void;
+  _disabledChanged(disabled: any): void;
   _hideSecondaryProgress(secondaryRatio: any): any;
 }
 
