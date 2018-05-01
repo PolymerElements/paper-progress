@@ -1,5 +1,6 @@
 {
   "name": "@polymer/paper-progress",
+  "version": "2.1.1",
   "private": true,
   "description": "A material design progress bar",
   "repository": {
