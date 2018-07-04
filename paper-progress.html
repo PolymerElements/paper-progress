@@ -102,6 +102,10 @@ Custom property                                  | Description                  
         display: none !important;
       }
 
+      :host-context([dir="rtl"]) {
+        transform: scaleX(-1);
+      }
+
       #progressContainer {
         @apply --paper-progress-container;
         position: relative;
