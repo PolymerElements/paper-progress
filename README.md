@@ -3,36 +3,6 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://webcomponents.org/element/@polymer/paper-progress)
 
 ## &lt;paper-progress&gt;
-<!---
-```
-<custom-element-demo>
-  <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../paper-styles/color.html">
-    <link rel="import" href="paper-progress.html">
-    <style is="custom-style">
-      paper-progress {
-        display: block;
-        width: 100%;
-        margin: 20px 0;
-      }
-      paper-progress.slow {
-        --paper-progress-indeterminate-cycle-duration: 5s;
-      }
-      paper-progress.blue {
-        --paper-progress-active-color: var(--paper-light-blue-500);
-        --paper-progress-secondary-color: var(--paper-light-blue-100);
-      }
-      paper-progress.red {
-        --paper-progress-active-color: var(--paper-red-500);
-        --paper-progress-secondary-color: var(--paper-red-100);
-      }
-    </style>
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
-```
--->
 
 The progress bars are for situations where the percentage completed can be
 determined. They give users a quick sense of how much longer an operation
