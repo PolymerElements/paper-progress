@@ -252,7 +252,7 @@ Polymer({
     </style>
 
     <div id="progressContainer">
-      <div id="secondaryProgress" hidden\$="[[_hideSecondaryProgress(secondaryRatio)]]"></div>
+      <div id="secondaryProgress" hidden$="[[_hideSecondaryProgress(secondaryRatio)]]"></div>
       <div id="primaryProgress"></div>
     </div>
 `,
