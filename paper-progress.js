@@ -91,6 +91,7 @@ Custom property | Description | Default
 @demo demo/index.html
 */
 Polymer({
+  /** @override */
   _template: html`
     <style>
       :host {
